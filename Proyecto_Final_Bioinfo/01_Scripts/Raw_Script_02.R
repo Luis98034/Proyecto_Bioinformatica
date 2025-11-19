@@ -104,6 +104,7 @@ suma_add <- 0
 indice <- 0
 while( suma_add >= P_instar & indice <length( mosquita_bd$add_adh)) {
   indice <- indice + 1 
+  suma_add <- suma_add + mosquita_bd$add_adh[indice] 
 }
 
 
