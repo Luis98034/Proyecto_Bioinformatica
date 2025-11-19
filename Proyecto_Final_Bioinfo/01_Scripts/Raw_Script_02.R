@@ -110,6 +110,69 @@ print(paste("El ADD/ADH resultante es:", suma_add))# Para que nos indique si se 
 # como debe de ser el add 
 
 
+##Selección de los valores predeterminados##########
+
+#Las siguientes son moscas de importancia forensce
+Especies_mosca <- c ("Sarcophaga crassipalpis", 
+                     "Musca domestica", "Lucilia sericata", "Cochliomyia macellaria")
+#Cada una de estas moscas tiene diferentes valores de grados día en cada estado de desarrollo
+#además de diferentes valores humbrales de desarrollo
+
+#Temp_desarrollo <- 12
+#P_instar <- 18.67
+#S_instar <- 53.78
+#T_instar <- 91.56
+#Pupa <- 176.89
+#Adulto <- 334.44
+
+#Se puede generar condicionales para cargar solo los valores de cada mosca si es el 
+#caso de tenerla, o también se puede tener una opción para que en caso de que no se tenga
+#las moscas preseleccionadas, se puedan agregar los parametros
+
+if(Mosca == "Musca domestica"){
+  Temp_desarrollo <- 12
+  P_instar <- 18.67
+  S_instar <- 53.78
+  T_instar <- 91.56
+  Pupa <- 176.89
+  Adulto <- 334.44
+}else if(Mosca == "Lucilia sericata"){
+  Temp_desarrollo <- 10.4
+  P_instar <- 8.8
+  S_instar <- 22.7
+  T_instar <- 56.5
+  Pupa <- 102.4
+  Adulto <- 221.2
+}else if (Mosca == "Cochliomyia macellaria"){
+  Temp_desarrollo <- 10
+  P_instar <- 22.24
+  S_instar <- 44.48
+  T_instar <- 78.03
+  Pupa <- 161.64
+  Adulto <- 294.5
+}else if (Mosca == "Sarcophaga crassipalpis"){
+  Temp_desarrollo <- 9.31
+  P_instar <- 24.4
+  S_instar <- 55.8
+  T_instar <- 106.6
+  Pupa <- 355.8
+  Adulto <- 698.6 
+} else{ #Si no hay ninguna de las opciones anteriores entonces corre los siguiente y añade los valores
+  Temp_desarrollo <- as.numeric(readline(prompt = "¿Cuál es la temperatura minima de desarrollo del especimen encontrado?"))
+  P_instar <- as.numeric(readline(prompt = "ADD primer instar"))
+  S_instar <- as.numeric(readline(prompt = "ADD segundo instar"))
+  T_instar <- as.numeric(readline(prompt = "ADD tercer instar"))
+  Pupa <- as.numeric(readline(prompt = "ADD Pupa"))
+  Adulto <- as.numeric(readline(prompt = "ADD Adulto"))
+}
+
+#Una vez dados los valores de cada mosca podríamos comenzar a calcular los grados días 
+#necesarios para que se llegue a ese estado de desarrollo
+
+
+
+
+
 
 
 
