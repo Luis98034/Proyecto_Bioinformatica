@@ -30,6 +30,7 @@
 #   UTI; umbral termico inferior o temperatura minima de desarrollo de la mosca 
 
 
+# Para la segunda función tenemos que... 
 
 # El valor de entrada puede ser un csv con la información de la
 # temperatura max y min por día, empezando por el día mas reciente
@@ -79,31 +80,206 @@ instar <- readline(prompt = "Cuál es el instar en el que se encontró a tu espe
 especie_mosca <- readline(prompt ="Escribe la especie a la que pertenece tu espécimen, ejemplo; Sarcophaga crassipalpis, Musca domestica, Lucilia sericata, Cochliomyia macellaria:")
 
 # Necesitamos especificar las horas de cada instar que forman parte del ciclo
-# de la especie de interés   
+# de la especie de interés  
 
-
+suma_add <- 0 # Requerimos de un vector donde se vaya sumando el ADD
+dias_transcurridos <- 0 # este vector es para saber cuantos días esta considerando 
+#                         en la suma para determinar el IPM 
 
 # si se cumple el instar en el que se encontro a tu especimen y tambien es 
 # de cierta especie, entonces tomara el valor de ADD que se conoce ese instar de
-# la especie que te interesa 
+# la especie que te interesa y a partir de este ejecutara el cilo for, siempre y cuando sea menor o igual al ADD del instar    
+
 if( instar == "L1" && especie_mosca ==  "Sarcophaga crassipalpis"){
+  P_instar <- 24.4 #ADD del primer instar
+  for (dia in 1:length(mosquita_bd$add_adh)) {#
+    if (suma_add <= P_instar) {#siempre y cuando el add acumula sea menor que el valor del add de la pupa corre lo siguiente
+      suma_add <- suma_add + mosquita_bd$add_adh[dia]#Aqui sobre escribe el acumulado sumandole el add diario que se calcula dependiendo del valor del dia
+      dias_transcurridos <- dias_transcurridos + 1# cada que corra el ciclo for sin importar el valo del add diario suma uno haciendo que se cuenten todos los días
+    } 
+  }
+}else if ( instar == "L2" && especie_mosca ==  "Sarcophaga crassipalpis"){
+  S_instar <- 55.8
+  for (dia in 1:length(mosquita_bd$add_adh)) {#
+    if (suma_add <= S_instar) {#siempre y cuando el add acumula sea menor que el valor del add de la pupa corre lo siguiente
+      suma_add <- suma_add + mosquita_bd$add_adh[dia]#Aqui sobre escribe el acumulado sumandole el add diario que se calcula dependiendo del valor del dia
+      dias_transcurridos <- dias_transcurridos + 1# cada que corra el ciclo for sin importar el valo del add diario suma uno haciendo que se cuenten todos los días
+    } 
+  }
+}else if(instar == "L3" && especie_mosca ==  "Sarcophaga crassipalpis"){
+  T_instar <- 106.6
+  for (dia in 1:length(mosquita_bd$add_adh)) {#
+    if (suma_add <= T_instar) {#siempre y cuando el add acumula sea menor que el valor del add de la pupa corre lo siguiente
+      suma_add <- suma_add + mosquita_bd$add_adh[dia]#Aqui sobre escribe el acumulado sumandole el add diario que se calcula dependiendo del valor del dia
+      dias_transcurridos <- dias_transcurridos + 1# cada que corra el ciclo for sin importar el valo del add diario suma uno haciendo que se cuenten todos los días
+    } 
+  }
+}else if(instar == "pupa" && especie_mosca ==  "Sarcophaga crassipalpis"){
+  Pupa <- 355.8
+  for (dia in 1:length(mosquita_bd$add_adh)) {#
+    if (suma_add <= Pupa) {#siempre y cuando el add acumula sea menor que el valor del add de la pupa corre lo siguiente
+      suma_add <- suma_add + mosquita_bd$add_adh[dia]#Aqui sobre escribe el acumulado sumandole el add diario que se calcula dependiendo del valor del dia
+      dias_transcurridos <- dias_transcurridos + 1# cada que corra el ciclo for sin importar el valo del add diario suma uno haciendo que se cuenten todos los días
+    } 
+  }
+}else if(instar == "adulto" && especie_mosca ==  "Sarcophaga crassipalpis"){
+  Adulto <- 698.6
+  for (dia in 1:length(mosquita_bd$add_adh)) {#
+    if (suma_add <= Adulto) {#siempre y cuando el add acumula sea menor que el valor del add de la pupa corre lo siguiente
+      suma_add <- suma_add + mosquita_bd$add_adh[dia]#Aqui sobre escribe el acumulado sumandole el add diario que se calcula dependiendo del valor del dia
+      dias_transcurridos <- dias_transcurridos + 1# cada que corra el ciclo for sin importar el valo del add diario suma uno haciendo que se cuenten todos los días
+    } 
+  }
+}else if(instar == "L1" && especie_mosca ==  "Musca domestica"){
+  P_instar <- 18.67 
+  for (dia in 1:length(mosquita_bd$add_adh)) {#
+    if (suma_add <= P_instar) {#siempre y cuando el add acumula sea menor que el valor del add de la pupa corre lo siguiente
+      suma_add <- suma_add + mosquita_bd$add_adh[dia]#Aqui sobre escribe el acumulado sumandole el add diario que se calcula dependiendo del valor del dia
+      dias_transcurridos <- dias_transcurridos + 1# cada que corra el ciclo for sin importar el valo del add diario suma uno haciendo que se cuenten todos los días
+    } 
+  }
+}else if ( instar == "L2" && especie_mosca ==  "Musca domestica"){
+  S_instar <- 53.78
+  for (dia in 1:length(mosquita_bd$add_adh)) {#
+    if (suma_add <= S_instar) {#siempre y cuando el add acumula sea menor que el valor del add de la pupa corre lo siguiente
+      suma_add <- suma_add + mosquita_bd$add_adh[dia]#Aqui sobre escribe el acumulado sumandole el add diario que se calcula dependiendo del valor del dia
+      dias_transcurridos <- dias_transcurridos + 1# cada que corra el ciclo for sin importar el valo del add diario suma uno haciendo que se cuenten todos los días
+    } 
+  }
+}else if(instar == "L3" && especie_mosca ==  "Musca domestica"){
+  T_instar <- 91.56
+  for (dia in 1:length(mosquita_bd$add_adh)) {#
+    if (suma_add <= T_instar) {#siempre y cuando el add acumula sea menor que el valor del add de la pupa corre lo siguiente
+      suma_add <- suma_add + mosquita_bd$add_adh[dia]#Aqui sobre escribe el acumulado sumandole el add diario que se calcula dependiendo del valor del dia
+      dias_transcurridos <- dias_transcurridos + 1# cada que corra el ciclo for sin importar el valo del add diario suma uno haciendo que se cuenten todos los días
+    } 
+  }
+}else if(instar == "pupa" && especie_mosca ==  "Musca domestica"){
+  Pupa <- 176.89
+  for (dia in 1:length(mosquita_bd$add_adh)) {#
+    if (suma_add <= Pupa) {#siempre y cuando el add acumula sea menor que el valor del add de la pupa corre lo siguiente
+      suma_add <- suma_add + mosquita_bd$add_adh[dia]#Aqui sobre escribe el acumulado sumandole el add diario que se calcula dependiendo del valor del dia
+      dias_transcurridos <- dias_transcurridos + 1# cada que corra el ciclo for sin importar el valo del add diario suma uno haciendo que se cuenten todos los días
+    } 
+  }
+}else if(instar == "adulto" && especie_mosca ==  "Musca domestica"){
+  Adulto <- 334.44
+  for (dia in 1:length(mosquita_bd$add_adh)) {#
+    if (suma_add <= Adulto) {#siempre y cuando el add acumula sea menor que el valor del add de la pupa corre lo siguiente
+      suma_add <- suma_add + mosquita_bd$add_adh[dia]#Aqui sobre escribe el acumulado sumandole el add diario que se calcula dependiendo del valor del dia
+      dias_transcurridos <- dias_transcurridos + 1# cada que corra el ciclo for sin importar el valo del add diario suma uno haciendo que se cuenten todos los días
+    } 
+  } 
+}else if( instar == "L1" && especie_mosca ==  "Lucilia sericata"){
+  P_instar <- 8.8
+  for (dia in 1:length(mosquita_bd$add_adh)) {#
+    if (suma_add <= P_instar) {#siempre y cuando el add acumula sea menor que el valor del add de la pupa corre lo siguiente
+      suma_add <- suma_add + mosquita_bd$add_adh[dia]#Aqui sobre escribe el acumulado sumandole el add diario que se calcula dependiendo del valor del dia
+      dias_transcurridos <- dias_transcurridos + 1# cada que corra el ciclo for sin importar el valo del add diario suma uno haciendo que se cuenten todos los días
+    } 
+  }
+} else if ( instar == "L2" && especie_mosca ==  "Lucilia sericata"){
+  S_instar <- 22.7
+  for (dia in 1:length(mosquita_bd$add_adh)) {#
+    if (suma_add <= S_instar) {#siempre y cuando el add acumula sea menor que el valor del add de la pupa corre lo siguiente
+      suma_add <- suma_add + mosquita_bd$add_adh[dia]#Aqui sobre escribe el acumulado sumandole el add diario que se calcula dependiendo del valor del dia
+      dias_transcurridos <- dias_transcurridos + 1# cada que corra el ciclo for sin importar el valo del add diario suma uno haciendo que se cuenten todos los días
+    } 
+  }
+}else if(instar == "L3" && especie_mosca ==  "Lucilia sericata"){
+  T_instar <- 56.5
+  for (dia in 1:length(mosquita_bd$add_adh)) {#
+    if (suma_add <= T_instar) {#siempre y cuando el add acumula sea menor que el valor del add de la pupa corre lo siguiente
+      suma_add <- suma_add + mosquita_bd$add_adh[dia]#Aqui sobre escribe el acumulado sumandole el add diario que se calcula dependiendo del valor del dia
+      dias_transcurridos <- dias_transcurridos + 1# cada que corra el ciclo for sin importar el valo del add diario suma uno haciendo que se cuenten todos los días
+    } 
+  }
+}else if(instar == "pupa" && especie_mosca ==  "Lucilia sericata"){
+  Pupa <- 102.4
+  for (dia in 1:length(mosquita_bd$add_adh)) {#
+    if (suma_add <= Pupa) {#siempre y cuando el add acumula sea menor que el valor del add de la pupa corre lo siguiente
+      suma_add <- suma_add + mosquita_bd$add_adh[dia]#Aqui sobre escribe el acumulado sumandole el add diario que se calcula dependiendo del valor del dia
+      dias_transcurridos <- dias_transcurridos + 1# cada que corra el ciclo for sin importar el valo del add diario suma uno haciendo que se cuenten todos los días
+    } 
+  }
+}else if(instar == "adulto" && especie_mosca ==  "Lucilia sericata"){
+  Adulto <- 221.2
+  for (dia in 1:length(mosquita_bd$add_adh)) {#
+    if (suma_add <= Adulto) {#siempre y cuando el add acumula sea menor que el valor del add de la pupa corre lo siguiente
+      suma_add <- suma_add + mosquita_bd$add_adh[dia]#Aqui sobre escribe el acumulado sumandole el add diario que se calcula dependiendo del valor del dia
+      dias_transcurridos <- dias_transcurridos + 1# cada que corra el ciclo for sin importar el valo del add diario suma uno haciendo que se cuenten todos los días
+    } 
+  }
+}else if(instar == "L1" && especie_mosca ==  "Cochliomyia macellaria"){
+  P_instar <- 22.24 
+  for (dia in 1:length(mosquita_bd$add_adh)) {#
+    if (suma_add <= P_instar) {#siempre y cuando el add acumula sea menor que el valor del add de la pupa corre lo siguiente
+      suma_add <- suma_add + mosquita_bd$add_adh[dia]#Aqui sobre escribe el acumulado sumandole el add diario que se calcula dependiendo del valor del dia
+      dias_transcurridos <- dias_transcurridos + 1# cada que corra el ciclo for sin importar el valo del add diario suma uno haciendo que se cuenten todos los días
+    } 
+  }
+}else if ( instar == "L2" && especie_mosca ==  "Cochliomyia macellaria"){
+  S_instar <- 44.48
+  for (dia in 1:length(mosquita_bd$add_adh)) {#
+    if (suma_add <= S_instar) {#siempre y cuando el add acumula sea menor que el valor del add de la pupa corre lo siguiente
+      suma_add <- suma_add + mosquita_bd$add_adh[dia]#Aqui sobre escribe el acumulado sumandole el add diario que se calcula dependiendo del valor del dia
+      dias_transcurridos <- dias_transcurridos + 1# cada que corra el ciclo for sin importar el valo del add diario suma uno haciendo que se cuenten todos los días
+    } 
+  }
+}else if(instar == "L3" && especie_mosca ==  "Cochliomyia macellaria"){
+  T_instar <- 78.03
+  for (dia in 1:length(mosquita_bd$add_adh)) {#
+    if (suma_add <= T_instar) {#siempre y cuando el add acumula sea menor que el valor del add de la pupa corre lo siguiente
+      suma_add <- suma_add + mosquita_bd$add_adh[dia]#Aqui sobre escribe el acumulado sumandole el add diario que se calcula dependiendo del valor del dia
+      dias_transcurridos <- dias_transcurridos + 1# cada que corra el ciclo for sin importar el valo del add diario suma uno haciendo que se cuenten todos los días
+    } 
+  }
+}else if(instar == "pupa" && especie_mosca ==  "Cochliomyia macellaria"){
+  Pupa <- 161.64
+  for (dia in 1:length(mosquita_bd$add_adh)) {#
+    if (suma_add <= Pupa) {#siempre y cuando el add acumula sea menor que el valor del add de la pupa corre lo siguiente
+      suma_add <- suma_add + mosquita_bd$add_adh[dia]#Aqui sobre escribe el acumulado sumandole el add diario que se calcula dependiendo del valor del dia
+      dias_transcurridos <- dias_transcurridos + 1# cada que corra el ciclo for sin importar el valo del add diario suma uno haciendo que se cuenten todos los días
+    } 
+  }
+}else if(instar == "adulto" && especie_mosca ==  "Cochliomyia macellaria"){
+  Adulto <- 294.5
+  for (dia in 1:length(mosquita_bd$add_adh)) {#
+    if (suma_add <= Adulto) {#siempre y cuando el add acumula sea menor que el valor del add de la pupa corre lo siguiente
+      suma_add <- suma_add + mosquita_bd$add_adh[dia]#Aqui sobre escribe el acumulado sumandole el add diario que se calcula dependiendo del valor del dia
+      dias_transcurridos <- dias_transcurridos + 1# cada que corra el ciclo for sin importar el valo del add diario suma uno haciendo que se cuenten todos los días
+    } 
+  }
+}else {
+  print("Al parecer no has ingresado los datos correctamente, por favor vuelve a intentarlo")
+}  
 
-}
+print(paste("El ADD/ADH resultante es:", suma_add, "y han trnascurrido :", dias_transcurridos))# Para que nos muestre el ADD 
+# que se ha sumado y cuántos días  esta considerando en la suma  
 
+suma_add # estos deben de ser los resultados esperados 
+dias_transcurridos # saber cuantos días han pasado 
+
+
+
+#--------------------------------------------------------------------------
+# Primer intento modificado pero lo dejamos por si se ocupa
+#if( instar == "L1" && especie_mosca ==  "Sarcophaga crassipalpis"){
+#}
 # ADD para cada instar de la especie de interes "Sarcophaga crassipalpis" 
-P_instar <- 24.4 
-S_instar <- 55.8
-T_instar <- 106.6
-Pupa <- 355.8
-Adulto <- 698.6 
+#P_instar <- 24.4 
+#S_instar <- 55.8
+#T_instar <- 106.6
+#Pupa <- 355.8
+#Adulto <- 698.6 
 
-suma_add <- 0 # Requerimos de un vector donde se vaya sumando el ADD
-indice <- 0 # es como una variable contadora para que sume uno por uno los valores de 
+#suma_add <- 0 # Requerimos de un vector donde se vaya sumando el ADD
+#indice <- 0 # es como una variable contadora para que sume uno por uno los valores de 
 # add de la tabla que se ingresó 
-while( suma_add < P_instar & indice <length( mosquita_bd$add_adh)) {
-  indice <- indice + 1 
-  suma_add <- suma_add + mosquita_bd$add_adh[indice] 
-} # Se supone que el while va dentro del primer condicional "if" pero no estoy segura si esto funciona bien 
+#while( suma_add < P_instar & indice <length( mosquita_bd$add_adh)) {
+#  indice <- indice + 1 
+#  suma_add <- suma_add + mosquita_bd$add_adh[indice] 
+#} # Se supone que el while va dentro del primer condicional "if" pero no estoy segura si esto funciona bien 
 
 
 print(paste("El ADD/ADH resultante es:", suma_add))# Para que nos indique si se sumo 
@@ -193,8 +369,8 @@ if (add_acumulado<pupa_prueba){ #En cado de que despues del ciclo for el add cau
 
 dias_transcurridos
 add_acumulado
-
-
+#-------------------------------------------------------------------------------
+# Ahora sí, agregamos la primera función  
 
 
 add_solve <- function (nombre_mosca, estado_desarrollo, vector_temperaturas){#Se necesita el nombre de la mosca, el estado en el que se encuentra y las temperaturas de los días
