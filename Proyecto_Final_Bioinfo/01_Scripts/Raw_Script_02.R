@@ -71,45 +71,50 @@ View(mosquita_bd) ## hasta aquí todo bien
 # que se encontró de la especie de la mosca 
 
 # Para ello necesitamos preguntar el instar en el que se encontró al espécimen  
-instar <- readline(prompt("Cuál es el instar en el que se encontró a tu especie? 
-                             Escribe justo como se te indica; 
-                             huevo, 
-                             L1 (larva primer instar),
-                             L2(larva segundo instar), 
-                             L3(larva tercer instar), pupa o adulto:"))
+
+instar <- readline(prompt = "Cuál es el instar en el que se encontró a tu especie? Escribe justo como se te indica; huevo, L1 (larva primer instar),L2(larva segundo instar), L3(larva tercer instar), pupa o adulto:")
 
 
 # y preguntar la especie de la mosca 
-especie_mosca <- readline(prompt("Escribe la especie a la que pertenece tu espécimen, ejemplo; 
-Sarcophaga crassipalpis, 
-Musca domestica, 
-Lucilia sericata, 
-Cochliomyia macellaria:"))
+especie_mosca <- readline(prompt ="Escribe la especie a la que pertenece tu espécimen, ejemplo; Sarcophaga crassipalpis, Musca domestica, Lucilia sericata, Cochliomyia macellaria:")
 
 # Necesitamos especificar las horas de cada instar que forman parte del ciclo
 # de la especie de interés   
 
 
 
-if( instar == "L1" | especie_mosca ==  "Sarcophaga crassipalpis"){
+# si se cumple el instar en el que se encontro a tu especimen y tambien es 
+# de cierta especie, entonces tomara el valor de ADD que se conoce ese instar de
+# la especie que te interesa 
+if( instar == "L1" && especie_mosca ==  "Sarcophaga crassipalpis"){
+
 }
 
-P_instar <- 24.4
+# ADD para cada instar de la especie de interes "Sarcophaga crassipalpis" 
+P_instar <- 24.4 
 S_instar <- 55.8
 T_instar <- 106.6
 Pupa <- 355.8
 Adulto <- 698.6 
 
-suma_add <- 0 
-indice <- 0
-while( suma_add >= P_instar & indice <length( mosquita_bd$add_adh)) {
+suma_add <- 0 # Requerimos de un vector donde se vaya sumando el ADD
+indice <- 0 # es como una variable contadora para que sume uno por uno los valores de 
+# add de la tabla que se ingresó 
+while( suma_add < P_instar & indice <length( mosquita_bd$add_adh)) {
   indice <- indice + 1 
   suma_add <- suma_add + mosquita_bd$add_adh[indice] 
-}
+} # Se supone que el while va dentro del primer condicional "if" pero no estoy segura si esto funciona bien 
+
+
+print(paste("El ADD/ADH resultante es:", suma_add))# Para que nos indique si se sumo 
+# como debe de ser el add 
 
 
 
- 
+
+
+
+
 
 
 
