@@ -169,6 +169,30 @@ if(Mosca == "Musca domestica"){
 #Una vez dados los valores de cada mosca podríamos comenzar a calcular los grados días 
 #necesarios para que se llegue a ese estado de desarrollo
 
+Temperaturas_prueba <- sample(3:28, size = 365, replace = TRUE)# Vector con temperaturas 
+                                                          #aleatorias entre 3 y 28 grados
+add_acumulado <- 0 #Aquí se va guardando 
+add_diario <- 0 #Aquí se aloja el add diario de cada ciclo
+dias_transcurridos <- 0 #Para contar los dias que pasan, o sea con cada ciclo pase lo que pase
+                      #se cuenta un día
+pupa_prueba <- 355
+for (dia in 1:length(Temperaturas_prueba)) {#de nuestra vareable dia toma los valores de la temperatura de uno en unp
+  if (add_acumulado <= pupa_prueba) {#siempre y cuando el add acumula sea menor que el valor del add de la pupa corre lo siguiente
+    add_diario <- Temperaturas_prueba[dia] - 12# El add diario lo calcula restando el valor de la temperatura menos el valor humbral, la desventaja es que tiene valores negativos
+    add_acumulado <- add_acumulado + add_diario#Aqui sobre escribe el acumulado sumandole el add diario que se calcula dependiendo del valor del dia
+    dias_transcurridos <- dias_transcurridos + 1# cada que corra el ciclo for sin importar el valo del add diario suma uno haciendo que se cuenten todos los días
+  } 
+}
+#El ciclo se detiene solo si el valor del add acumulado supera el de la pupa o si se acaban
+#los valores dentro del vector del valor de las temperaturas, por lo que el siguiente
+#codigo nos dice si es necesario tomar más temperaturas
+if (add_acumulado<pupa_prueba){ #En cado de que despues del ciclo for el add caumulado siga siendo menor
+    paste(print("hay que ir más atras"))#dime que es necesario ir más atras en el tiempo
+}
+
+
+dias_transcurridos
+add_acumulado
 
 
 
